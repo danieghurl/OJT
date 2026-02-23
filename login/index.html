@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Learn - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+
+ </head>
+ <body class="h-full overflow-hidden">
+  <div id="app" class="h-full flex items-center justify-center p-4 relative" style="z-index: 1;">
+   <div class="w-full max-w-md">
+    <div class="glass-card rounded-3xl p-8">
+     <div class="text-center mb-8">
+      <img id="logo-image" src="logo.png" alt="e-learn Logo" class="mx-auto mb-2 h-24 object-contain logo-3d" onerror="this.style.display='none'">
+      <p class="text-gray-600 mt-2 text-sm font-medium tracking-wide">Digital Academic Operating System</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mt-3 rounded-full"></div>
+     </div>
+     
+     <form onsubmit="handleLogin(event)" class="space-y-5">
+      <div class="relative">
+       <input type="email" id="login-email" placeholder="Email address" class="input-field w-full px-5 py-4 rounded-2xl text-gray-700 placeholder-gray-400 focus:outline-none">
+      </div>
+      
+      <div class="relative">
+       <input type="password" id="login-password" placeholder="Password" class="input-field w-full px-5 py-4 rounded-2xl text-gray-700 placeholder-gray-400 focus:outline-none">
+      </div>
+      
+      <div class="flex items-center justify-between text-sm px-1">
+       <label class="flex items-center gap-2 cursor-pointer group">
+        <input type="checkbox" class="checkbox-custom rounded">
+        <span class="text-gray-600 group-hover:text-gray-800 transition-colors">Remember me</span>
+       </label> 
+       <a href="#" onclick="showToast('Password reset feature coming soon', 'info'); return false;" class="forgot-link text-sm">
+        Forgot password?
+       </a>
+      </div>
+      
+      <button type="submit" class="login-btn w-full text-white font-semibold py-4 px-4 rounded-2xl transition-all shadow-lg relative overflow-hidden">
+       <span class="relative z-10">Login</span>
+      </button>
+      
+      <!-- <p class="text-center text-gray-500 text-sm mt-6">
+        Demo: student1@school.com / password123
+      </p> -->
+     </form>
+    </div>
+   </div>
+  </div>
+  
+  <div id="toast-container"></div>
+  
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+
+      if (!email || !password) {
+        showToast('Please enter email and password', 'error');
+        return;
+      }
+
+      const validCredentials = [
+        { email: 'student1@school.com', password: 'password123', role: 'Student' },
+        { email: 'teacher1@school.com', password: 'password123', role: 'Teacher' }
+      ];
+
+      const user = validCredentials.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        showToast(`✓ Login successful! Welcome, ${user.role}`, 'success');
+      } else {
+        showToast('Invalid credentials', 'error');
+        document.getElementById('login-password').value = '';
+      }
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.textContent = message;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    document.getElementById('login-password').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.querySelector('form').dispatchEvent(new Event('submit'));
+      }
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cfcee33b031a9a8',t:'MTc3MTQxMTQ4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
