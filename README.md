@@ -1,5 +1,5 @@
 # OJT Project
 
 ## Features
-- Main Page - [Link](main-page/index.html)
-- Login System - [Link](login-system/login.html)
+- Main Page - (main-page/index.html)
+- Login System - (login-system/login.html)
