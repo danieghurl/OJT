@@ -1,0 +1,86 @@
+* {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.sidebar-gradient {
+    background: linear-gradient(180deg, #ffffff 0%, #e3f2fd 50%, #bbdefb 100%);
+}
+.card-shadow {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.nav-item {
+    transition: all 0.2s ease;
+}
+.nav-item:hover {
+    background: rgba(33, 150, 243, 0.1);
+    transform: translateX(4px);
+}
+.nav-item.active {
+    background: rgba(33, 150, 243, 0.15);
+    border-right: 3px solid #1976d2;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #1976d2, #1565c0);
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+}
+.status-paid {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+.status-unpaid {
+    background: #ffebee;
+    color: #c62828;
+}
+.locked-overlay {
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade {
+    animation: fadeIn 0.3s ease-out;
+}
+.schedule-card {
+    transition: all 0.2s ease;
+}
+.schedule-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #bbdefb;
+    border-radius: 3px;
+}
+/* new styles for My schedule – grey first, turns blue when scheduled */
+.schedule-slot.available {
+    background-color: #6b7280 !important;
+}
+.schedule-slot.available:hover {
+    background-color: #4b5563 !important;
+}
+.schedule-slot.scheduled {
+    background-color: #3b82f6 !important;
+}
+.schedule-slot.scheduled:hover {
+    background-color: #2563eb !important;
+}
+.schedule-slot.unavailable {
+    background-color: #ef4444 !important;
+    cursor: not-allowed !important;
+}
+.schedule-slot.enrolled {
+    background-color: #2563eb !important;
+    cursor: not-allowed !important;
+}
+body {
+    box-sizing: border-box;
+}
